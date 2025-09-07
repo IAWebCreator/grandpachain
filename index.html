@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrandpaChain ($GPC) - The OG of Meme Tokens</title>
+    <meta name="description" content="GrandpaChain is where nostalgia meets blockchain. A project that sips tea, tells stories, and HODLs through the chaos like only a grandpa can.">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="GrandpaChain ($GPC)">
+    <meta property="og:description" content="The comforting hug of the crypto world wrapped in the absurdity of meme culture.">
+    <meta property="og:image" content="https://yoahusjzxyasdporfmmt.supabase.co/storage/v1/object/public/token-logos/b2e213c2-095b-4b68-872d-c0f815de5564.jpeg?">
+    <meta property="og:url" content="#"> <!-- Replace with actual URL when deployed -->
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://yoahusjzxyasdporfmmt.supabase.co/storage/v1/object/public/token-logos/b2e213c2-095b-4b68-872d-c0f815de5564.jpeg?">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Reset and Base Styles */
+        :root {
+            --bg-color: #F5EFE6; /* Light Beige */
+            --paper-color: #FFFBF5; /* Off-white for cards */
+            --text-color: #4A3F35; /* Dark Brown */
+            --heading-color: #3D352E;
+            --accent-color: #D4A373; /* Muted Gold/Brown */
+            --accent-hover: #BC8A5F;
+            --border-color: #E8DFD3; /* Lighter Brown */
+            --font-heading: 'Lora', serif;
+            --font-body: 'Poppins', sans-serif;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.05), 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E8DFD3' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* General Typography */
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--heading-color);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
+        h2 { font-size: clamp(2rem, 6vw, 3rem); }
+        h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
+        p { margin-bottom: 1.5rem; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(245, 239, 230, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 15px 0;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--heading-color);
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-logo img {
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: none; /* Hidden on mobile */
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .buy-now-nav {
+            display: none; /* Hidden on mobile */
+        }
+
+        .mobile-menu-toggle {
+            display: block; /* Shown on mobile */
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle .icon-bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--heading-color);
+            margin: 5px 0;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: var(--paper-color);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .mobile-nav.open {
+            right: 0;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav-links li {
+            margin: 25px 0;
+        }
+
+        .mobile-nav-links a {
+            text-decoration: none;
+            color: var(--heading-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .mobile-menu-toggle.open .icon-bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .mobile-menu-toggle.open .icon-bar:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-menu-toggle.open .icon-bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+
+        /* Hero Section */
+        .hero {
+            padding-top: 150px;
+            text-align: center;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            box-shadow: var(--shadow-lg);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero-content h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text .icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Tokenomics Section */
+        #tokenomics {
+            background-color: var(--paper-color);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tokenomics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .tokenomic-card {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tokenomic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .tokenomic-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .tokenomic-card .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        .contract-address-wrapper {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .contract-address {
+            background: var(--bg-color);
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 100%;
+        }
+
+        .contract-address span {
+            font-family: monospace;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .copy-btn {
+            background: var(--accent-color);
+            border: none;
+            color: white;
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .copy-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .copy-tooltip {
+            position: relative;
+        }
+
+        .copy-tooltip .tooltip-text {
+            visibility: hidden;
+            width: 120px;
+            background-color: var(--text-color);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .copy-tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--text-color) transparent transparent transparent;
+        }
+
+        .copy-tooltip .tooltip-text.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* How to Buy Section */
+        .how-to-buy-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .step-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            background: var(--paper-color);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            font-family: var(--font-heading);
+            line-height: 1;
+        }
+
+        .step-content h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Roadmap Section */
+        #roadmap {
+            background-color: var(--paper-color);
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .roadmap-timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .roadmap-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .roadmap-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--bg-color);
+            border: 4px solid var(--accent-color);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .roadmap-item.left {
+            left: 0;
+        }
+
+        .roadmap-item.right {
+            left: 50%;
+        }
+
+        .roadmap-item.left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 30px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--border-color);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--border-color);
+        }
+
+        .roadmap-item.right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 30px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--border-color);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--border-color) transparent transparent;
+        }
+
+        .roadmap-item.right::after {
+            left: -10px;
+        }
+
+        .roadmap-content {
+            padding: 20px 30px;
+            background-color: var(--bg-color);
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .roadmap-content ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+
+        /* Community Section */
+        .community-content {
+            background: var(--paper-color);
+            padding: 60px 40px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .community-content p {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Animation on Scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-links { display: flex; }
+            .buy-now-nav { display: block; }
+            .mobile-menu-toggle { display: none; }
+            .about-content { grid-template-columns: 1fr 1fr; }
+            .about-image { order: 2; }
+            .about-text { order: 1; }
+            .how-to-buy-steps { grid-template-columns: 1fr 1fr; }
+            .contract-address span { font-size: 1.1rem; }
+        }
+
+        @media (max-width: 767px) {
+            .roadmap-timeline::after {
+                left: 20px;
+            }
+            .roadmap-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 10px;
+            }
+            .roadmap-item.left, .roadmap-item.right {
+                left: 0%;
+            }
+            .roadmap-item.left::after, .roadmap-item.right::after {
+                left: 10px;
+            }
+            .roadmap-item.left::before, .roadmap-item.right::before {
+                left: 40px;
+                border: medium solid var(--border-color);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--border-color) transparent transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="nav-logo">
+                    <img src="https://yoahusjzxyasdporfmmt.supabase.co/storage/v1/object/public/token-logos/b2e213c2-095b-4b68-872d-c0f815de5564.jpeg?" alt="GrandpaChain Logo">
+                    <span>GrandpaChain</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#tokenomics">Tokenomics</a></li>
+                    <li><a href="#how-to-buy">How to Buy</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                </ul>
+                <a href="#how-to-buy" class="btn btn-primary buy-now-nav">Buy $GPC</a>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobile-nav">
+        <ul class="mobile-nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#tokenomics">Tokenomics</a></li>
+            <li><a href="#how-to-buy">How to Buy</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#how-to-buy" class="btn btn-primary">Buy $GPC</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content animate-on-scroll">
+                    <img src="https://yoahusjzxyasdporfmmt.supabase.co/storage/v1/object/public/token-logos/b2e213c2-095b-4b68-872d-c0f815de5564.jpeg?" alt="GrandpaChain Logo" class="hero-logo">
+                    <h1>Welcome to GrandpaChain</h1>
+                    <p class="hero-tagline">
+                        Pull up a rocking chair in the chaotic world of crypto. We're here to stay, sip our tea, and HODL through it all with a wink and a smile.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#how-to-buy" class="btn btn-primary">Buy $GPC Now</a>
+                        <a href="#tokenomics" class="btn btn-secondary">View Contract</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image animate-on-scroll">
+                        <img src="https://yoahusjzxyasdporfmmt.supabase.co/storage/v1/object/public/token-logos/b2e213c2-095b-4b68-872d-c0f815de5564.jpeg?" alt="Grandpa holding a teacup and a bazooka" style="width: 100%; max-width: 400px; margin: auto; display: block; border-radius: 20px;">
+                    </div>
+                    <div class="about-text animate-on-scroll">
+                        <h2>Wisdom, Warmth, and a Bazooka.</h2>
+                        <p>In a world of fleeting trends, GrandpaChain offers something different: enduring character. We blend the comforting nostalgia of a grandpa's stories with the sharp, ironic humor of meme culture.</p>
+                        <p>This is a community built on the principle of steady hands and long-term vision. We value good stories, strong bonds, and the quiet confidence of knowing we're in it for the long haul. We sip our tea during market dips and tell tales of the old days, all while keeping an eye on the future.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tokenomics Section -->
+        <section id="tokenomics">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2>The Family Treasury</h2>
+                    <p>Our tokenomics are designed with simplicity and longevity in mind, just like grandpa's favorite armchair. No confusing taxes, just a straightforward plan for community growth.</p>
+                </div>
+                <div class="tokenomics-grid">
+                    <div class="tokenomic-card animate-on-scroll">
+                        <h3>Total Supply</h3>
+                        <p class="value">1,000,000,000 GPC</p>
+                    </div>
+                    <div class="tokenomic-card animate-on-scroll" style="transition-delay: 0.1s;">
+                        <h3>Ticker</h3>
+                        <p class="value">$GPC</p>
+                    </div>
+                    <div class="tokenomic-card animate-on-scroll" style="transition-delay: 0.2s;">
+                        <h3>Taxes</h3>
+                        <p class="value">0% Buy / 0% Sell</p>
+                    </div>
+                </div>
+                <div class="contract-address-wrapper animate-on-scroll">
+                    <h3>Official Contract Address</h3>
+                    <div class="contract-address">
+                        <span>CHiNsA2B6ZbmKnEmHPCbbX9aXJyoJzAtcLpHEDd6Qyq3</span>
+                        <div class="copy-tooltip">
+                            <span class="tooltip-text" id="copyTooltip">Copy to clipboard</span>
+                            <button class="copy-btn" id="copyButton" aria-label="Copy contract address">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Buy Section -->
+        <section id="how-to-buy">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2>Join the Porch Swing</h2>
+                    <p>Ready to settle in with a warm cup of $GPC? Follow these simple steps to join the GrandpaChain family. It's easier than assembling flat-pack furniture.</p>
+                </div>
+                <div class="how-to-buy-steps">
+                    <div class="step-card animate-on-scroll">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Get a Wallet</h3>
+                            <p>Download a Solana-compatible wallet like Phantom or Solflare from the app store or browser extension store.</p>
+                        </div>
+                    </div>
+                    <div class="step-card animate-on-scroll" style="transition-delay: 0.1s;">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Get Some SOL</h3>
+                            <p>Buy Solana (SOL) on a major exchange (like Coinbase, Binance, etc.) and send it to your new wallet address.</p>
+                        </div>
+                    </div>
+                    <div class="step-card animate-on-scroll" style="transition-delay: 0.2s;">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Go to a DEX</h3>
+                            <p>Visit a decentralized exchange like Raydium or Jupiter. Connect your wallet to the platform.</p>
+                        </div>
+                    </div>
+                    <div class="step-card animate-on-scroll" style="transition-delay: 0.3s;">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Swap for $GPC</h3>
+                            <p>Paste our contract address, select how much SOL you want to swap, and confirm the transaction. Welcome aboard!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2>The Grand Plan</h2>
+                    <p>Every good story has a beginning, a middle, and an end. Here's a peek at the chapters we're writing for GrandpaChain.</p>
+                </div>
+                <div class="roadmap-timeline">
+                    <div class="roadmap-item left animate-on-scroll">
+                        <div class="roadmap-content">
+                            <h3>Phase 1: Brewing the Tea</h3>
+                            <ul>
+                                <li>Token Launch</li>
+                                <li>Website & Socials Setup</li>
+                                <li>Community Building</li>
+                                <li>CoinGecko/CMC Listings</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="roadmap-item right animate-on-scroll">
+                        <div class="roadmap-content">
+                            <h3>Phase 2: Telling War Stories</h3>
+                            <ul>
+                                <li>First CEX Listings</li>
+                                <li>Community Contests & Giveaways</li>
+                                <li>Partnerships with Nostalgic Brands</li>
+                                <li>Grandpa's Meme Factory Launch</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="roadmap-item left animate-on-scroll">
+                        <div class="roadmap-content">
+                            <h3>Phase 3: Firing the Bazooka</h3>
+                            <ul>
+                                <li>Major Marketing Push</li>
+                                <li>Utility Development (TBA)</li>
+                                <li>GrandpaChain Merchandise Store</li>
+                                <li>Global Community Expansion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community">
+            <div class="container">
+                <div class="community-content animate-on-scroll">
+                    <h2>The Living Room is Open</h2>
+                    <p>The heart of GrandpaChain is its community. While we don't have public social channels listed here yet, the kettle is on and we're getting ready to welcome everyone. Stay tuned for official links as we build our home on the blockchain.</p>
+                    <!-- NOTE: Social links are omitted as per instructions because no URLs were provided in the input.
+                    If links were provided, they would be rendered here as buttons.
+                    Example:
+                    <div class="hero-cta" style="margin-top: 2rem;">
+                        <a href="TELEGRAM_URL" class="btn btn-primary">Join Telegram</a>
+                        <a href="X_URL" class="btn btn-secondary">Follow on X</a>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="https://yoahusjzxyasdporfmmt.supabase.co/storage/v1/object/public/token-logos/b2e213c2-095b-4b68-872d-c0f815de5564.jpeg?" alt="GrandpaChain Logo" class="footer-logo">
+            <p>&copy; 2024 GrandpaChain. All Rights Reserved.</p>
+            <p>Always HODL responsibly.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Sticky Header ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // --- Mobile Menu ---
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('open');
+                mobileNav.classList.toggle('open');
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('open');
+                    mobileNav.classList.remove('open');
+                });
+            });
+
+            // --- Copy to Clipboard ---
+            const copyButton = document.getElementById('copyButton');
+            const copyTooltip = document.getElementById('copyTooltip');
+            const contractAddress = 'CHiNsA2B6ZbmKnEmHPCbbX9aXJyoJzAtcLpHEDd6Qyq3';
+
+            copyButton.addEventListener('click', () => {
+                navigator.clipboard.writeText(contractAddress).then(() => {
+                    copyTooltip.textContent = 'Copied!';
+                    copyTooltip.classList.add('visible');
+                    setTimeout(() => {
+                        copyTooltip.classList.remove('visible');
+                        setTimeout(() => {
+                            copyTooltip.textContent = 'Copy to clipboard';
+                        }, 300);
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+
+            // --- Scroll Animations ---
+            const scrollElements = document.querySelectorAll('.animate-on-scroll');
+
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+
+            const displayScrollElement = (element) => {
+                element.classList.add('is-visible');
+            };
+
+            const hideScrollElement = (element) => {
+                element.classList.remove('is-visible');
+            };
+
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+            
+            // Initial check on page load
+            handleScrollAnimation();
+        });
+    </script>
+
+</body>
+</html>
